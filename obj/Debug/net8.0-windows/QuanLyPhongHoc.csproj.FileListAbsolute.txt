@@ -1,0 +1,8 @@
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.Form1.resources
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.MainForm.resources
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.csproj.GenerateResource.cache
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.GeneratedMSBuildEditorConfig.editorconfig
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.AssemblyInfoInputs.cache
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.AssemblyInfo.cs
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.csproj.CoreCompileInputs.cache
+D:\HK4\Hoc_C#\BanHoaQua\QuanLyPhongHoc\obj\Debug\net8.0-windows\QuanLyPhongHoc.FormDangNhap.resources
