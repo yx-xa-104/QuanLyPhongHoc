@@ -1,18 +1,13 @@
-﻿using QuanLyPhongHoc.DTO;
+﻿using QuanLyPhongHoc.DAL;
+using QuanLyPhongHoc.DTO;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongHoc
 {
     public partial class MainForm : Form
     {
+        private DAL.PhongHocDAL phongHocDAL = new DAL.PhongHocDAL();
         public MainForm()
         {
             InitializeComponent();
@@ -22,53 +17,45 @@ namespace QuanLyPhongHoc
         {
             if (CurrentUserSession.User == null)
             {
-                // Nếu chưa đăng nhập mà mở form này thì đóng lại
                 MessageBox.Show("Vui lòng đăng nhập để sử dụng hệ thống!");
                 this.Close();
                 return;
             }
-
-            // Hiển thị thông tin người dùng
             lblUserInfo.Text = $"Xin chào: {CurrentUserSession.User.HoTen} | Quyền: {CurrentUserSession.User.Quyen}";
-
-            // Phân quyền chức năng trên MenuStrip
             if (CurrentUserSession.User.Quyen == "Giáo viên")
             {
-                quảnLýToolStripMenuItem.Enabled = false; // Vô hiệu hóa menu Quản lý
+                quảnLýToolStripMenuItem.Enabled = false;
             }
-            // Admin thì mặc định được dùng tất cả
+            timerAutoUpdate.Start();
         }
 
-        // Code cho menu Đăng xuất
-        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        private void timerAutoUpdate_Tick(object sender, EventArgs e)
         {
-            CurrentUserSession.User = null; // Xóa session
-                                            // Hiển thị lại form đăng nhập
-                                            // Cần tìm form đăng nhập đã ẩn và show lại
-            Application.OpenForms["FormDangNhap"].Show();
-            this.Close();
+            try
+            {
+                // Gọi phương thức tự động cập nhật CSDL
+                phongHocDAL.CapNhatTrangThaiTuDong();
+
+                // Kiểm tra xem FormQuanLy có đang mở không để làm mới dữ liệu
+                Form formQuanLy = Application.OpenForms["FormQuanLy"];
+                if (formQuanLy != null)
+                {
+                    (formQuanLy as FormQuanLy)?.LoadData();
+                }
+            }
+            catch (Exception ex)
+            {
+                timerAutoUpdate.Stop();
+                MessageBox.Show("Lỗi tự động cập nhật trạng thái: " + ex.Message, "Lỗi hệ thống", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void statusStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void lblUserInfo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
+        #region Button Click Events       
 
         private void quảnLýToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormQuanLy formQuanLy = new FormQuanLy();
             formQuanLy.ShowDialog();
-
         }
 
         private void đăngKýSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,32 +69,35 @@ namespace QuanLyPhongHoc
             FormLichSu formLichSu = new FormLichSu();
             formLichSu.ShowDialog();
         }
-
         private void đăngXuấtToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            // Đóng form hiện tại
-            this.Close();
+            // Xóa thông tin phiên đăng nhập hiện tại
+            CurrentUserSession.User = null;
 
-            // Hiển thị lại form đăng nhập
+            // Tìm form đăng nhập đã bị ẩn
             Form formDangNhap = Application.OpenForms["FormDangNhap"];
             if (formDangNhap != null)
             {
+                // Hiển thị lại form đăng nhập
                 formDangNhap.Show();
             }
-            else
+            else // Trường hợp dự phòng nếu form đăng nhập đã bị đóng
             {
                 FormDangNhap newLogin = new FormDangNhap();
                 newLogin.Show();
             }
-        }
 
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+            // Ẩn form chính đi
+            this.Hide();
+        }
+        #endregion
+
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // Khi MainForm đóng, nếu người dùng không chủ động đăng xuất thì hiển thị lại form đăng nhập.
-            Form formDangNhap = Application.OpenForms["FormDangNhap"];
-            if (formDangNhap != null && formDangNhap.Visible == false)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
-                formDangNhap.Show();
+                Application.Exit();
             }
         }
     }

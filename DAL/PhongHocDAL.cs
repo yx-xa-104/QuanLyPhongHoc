@@ -81,5 +81,50 @@ namespace QuanLyPhongHoc.DAL
                 return cmd.ExecuteNonQuery() > 0;
             }
         }
+        public bool UpdateStatus(int idPhong, string trangThaiMoi)
+        {
+            string query = "UPDATE PhongHoc SET TrangThai = @TrangThai WHERE ID = @ID";
+            using (SqlConnection conn = dbConnection.GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@ID", idPhong);
+                cmd.Parameters.AddWithValue("@TrangThai", trangThaiMoi);
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
+        public void CapNhatTrangThaiTuDong()
+        {
+            // Sử dụng GETDATE() để lấy thời gian hiện tại của server SQL
+            string query = @"
+        -- B1: Chuyển các phòng 'Đã đặt trước' thành 'Đang sử dụng' nếu đến giờ
+        UPDATE ph
+        SET ph.TrangThai = 'Đang sử dụng'
+        FROM PhongHoc ph
+        JOIN LichSuDung ls ON ph.ID = ls.ID_Phong
+        WHERE 
+            ph.TrangThai = 'Đã đặt trước' AND
+            GETDATE() BETWEEN ls.ThoiGianBatDau AND ls.ThoiGianKetThuc;
+
+        -- B2: Chuyển các phòng 'Đang sử dụng' thành 'Trống' nếu đã hết giờ
+        -- Logic này cần cẩn thận để không chuyển phòng có lịch đặt ngay sau đó
+        UPDATE ph
+        SET ph.TrangThai = 'Trống'
+        FROM PhongHoc ph
+        WHERE
+            ph.TrangThai = 'Đang sử dụng' AND
+            NOT EXISTS (
+                SELECT 1 FROM LichSuDung ls 
+                WHERE ls.ID_Phong = ph.ID AND GETDATE() BETWEEN ls.ThoiGianBatDau AND ls.ThoiGianKetThuc
+            );
+    ";
+
+            using (SqlConnection conn = dbConnection.GetConnection())
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

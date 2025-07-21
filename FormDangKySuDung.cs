@@ -7,7 +7,7 @@ namespace QuanLyPhongHoc
 {
     public partial class FormDangKySuDung : Form
     {
-        // Đối tượng DAL để tương tác với cơ sở dữ liệu
+        // Khởi tạo các đối tượng DAL để tái sử dụng trong form
         private PhongHocDAL phongHocDAL = new PhongHocDAL();
         private LichSuDungDAL lichSuDungDAL = new LichSuDungDAL();
 
@@ -18,7 +18,6 @@ namespace QuanLyPhongHoc
 
         private void FormDangKySuDung_Load(object sender, EventArgs e)
         {
-            // Nạp danh sách phòng học vào ComboBox khi form được tải
             var danhSachPhong = phongHocDAL.GetAll();
             cboPhongHoc.DataSource = danhSachPhong;
             cboPhongHoc.DisplayMember = "TenPhong";
@@ -27,6 +26,7 @@ namespace QuanLyPhongHoc
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
+            // KIỂM TRA ĐẦU VÀO 
             if (cboPhongHoc.SelectedValue == null)
             {
                 MessageBox.Show("Vui lòng chọn một phòng học.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -47,13 +47,14 @@ namespace QuanLyPhongHoc
 
             try
             {
-                // Kiểm tra xem phòng đã có người đăng ký trong khoảng thời gian này chưa
+                // Kiểm tra xem có bị trùng lịch hay không
                 if (lichSuDungDAL.KiemTraTrungLich(idPhong, thoiGianBatDau, thoiGianKetThuc))
                 {
                     MessageBox.Show("Phòng đã có người đăng ký trong khoảng thời gian này. Vui lòng chọn thời gian khác.", "Trùng lịch", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
+                // Nếu không trùng lịch, tiến hành đăng ký
                 LichSuDung lichDangKyMoi = new LichSuDung
                 {
                     ID_Phong = idPhong,
@@ -63,11 +64,13 @@ namespace QuanLyPhongHoc
                     MucDich = mucDich
                 };
 
-                // Thực hiện đăng ký phòng
                 if (lichSuDungDAL.DangKy(lichDangKyMoi))
                 {
+                    // Sau khi đăng ký thành công, cập nhật trạng thái phòng thành "Đã đặt trước"
+                    phongHocDAL.UpdateStatus(idPhong, "Đã đặt trước");
+
                     MessageBox.Show("Đăng ký phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
+                    this.Close(); // Đóng form sau khi đăng ký thành công
                 }
                 else
                 {

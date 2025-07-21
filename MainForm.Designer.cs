@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             menuStrip1 = new MenuStrip();
             hệThốngToolStripMenuItem = new ToolStripMenuItem();
             đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
@@ -37,6 +38,7 @@
             lịchSửSửDụngToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1 = new StatusStrip();
             lblUserInfo = new ToolStripStatusLabel();
+            timerAutoUpdate = new System.Windows.Forms.Timer(components);
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -49,7 +51,6 @@
             menuStrip1.Size = new Size(800, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
-            menuStrip1.ItemClicked += menuStrip1_ItemClicked;
             // 
             // hệThốngToolStripMenuItem
             // 
@@ -61,7 +62,7 @@
             // đăngXuấtToolStripMenuItem
             // 
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            đăngXuấtToolStripMenuItem.Size = new Size(180, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(127, 22);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
             đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click_1;
             // 
@@ -101,14 +102,18 @@
             statusStrip1.Size = new Size(800, 22);
             statusStrip1.TabIndex = 1;
             statusStrip1.Text = "statusStrip1";
-            statusStrip1.ItemClicked += statusStrip1_ItemClicked;
             // 
             // lblUserInfo
             // 
             lblUserInfo.Name = "lblUserInfo";
             lblUserInfo.Size = new Size(63, 17);
             lblUserInfo.Text = "User name";
-            lblUserInfo.Click += lblUserInfo_Click;
+            // 
+            // timerAutoUpdate
+            // 
+            timerAutoUpdate.Enabled = true;
+            timerAutoUpdate.Interval = 60000;
+            timerAutoUpdate.Tick += timerAutoUpdate_Tick;
             // 
             // MainForm
             // 
@@ -120,7 +125,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "MainForm";
-            FormClosed += MainForm_FormClosed;
+            FormClosing += MainForm_FormClosing;
             Load += MainForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -141,5 +146,6 @@
         private ToolStripMenuItem lịchSửSửDụngToolStripMenuItem;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel lblUserInfo;
+        private System.Windows.Forms.Timer timerAutoUpdate;
     }
 }

@@ -109,6 +109,7 @@
             Controls.Add(label1);
             Name = "FormDangNhap";
             Text = "FormDangNhap";
+            FormClosing += FormDangNhap_FormClosing;
             Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();

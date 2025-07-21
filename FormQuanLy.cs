@@ -10,40 +10,13 @@ namespace QuanLyPhongHoc
         public FormQuanLy()
         {
             InitializeComponent();
-        }
+        }       
 
-        private void FormQuanLy_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void LoadData()
+        public void LoadData()
         {
             dgvPhongHoc.DataSource = phongHocDAL.GetAll();
             dgvPhongHoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }
-
-        private void dgvPhongHoc_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row = dgvPhongHoc.Rows[e.RowIndex];
-                txtID.Text = row.Cells["ID"].Value.ToString();
-                txtTenPhong.Text = row.Cells["TenPhong"].Value.ToString();
-                txtSucChua.Text = row.Cells["SucChua"].Value.ToString();
-                txtMoTa.Text = row.Cells["MoTa"].Value.ToString();
-
-                string trangThaiFromGrid = row.Cells["TrangThai"].Value.ToString();
-                int index = cboTrangThai.FindStringExact(trangThaiFromGrid);
-                if (index != -1)
-                {
-                    cboTrangThai.SelectedIndex = index;
-                }
-                else
-                {
-                    cboTrangThai.SelectedIndex = 0; // Nếu không tìm thấy, chọn giá trị mặc định
-                }
-            }
-        }
+        }       
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -195,22 +168,24 @@ namespace QuanLyPhongHoc
 
         private void dgvPhongHoc_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            // Chỉ thực hiện khi người dùng click vào một dòng hợp lệ
             if (e.RowIndex >= 0)
             {
-                // Lấy dòng đang được chọn
                 DataGridViewRow row = dgvPhongHoc.Rows[e.RowIndex];
-
-                // Điền thông tin từ dòng vào các control tương ứng
                 txtID.Text = row.Cells["ID"].Value.ToString();
                 txtTenPhong.Text = row.Cells["TenPhong"].Value.ToString();
                 txtSucChua.Text = row.Cells["SucChua"].Value.ToString();
                 txtMoTa.Text = row.Cells["MoTa"].Value.ToString();
 
-                // Gán giá trị cho ComboBox một cách an toàn
                 string trangThaiFromGrid = row.Cells["TrangThai"].Value.ToString();
                 int index = cboTrangThai.FindStringExact(trangThaiFromGrid);
-                cboTrangThai.SelectedIndex = (index != -1) ? index : 0;
+                if (index != -1)
+                {
+                    cboTrangThai.SelectedIndex = index;
+                }
+                else
+                {
+                    cboTrangThai.SelectedIndex = 0; // Nếu không tìm thấy, chọn giá trị mặc định
+                }
             }
         }       
     }

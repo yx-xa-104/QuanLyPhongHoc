@@ -1,4 +1,6 @@
 ﻿using QuanLyPhongHoc.DTO;
+using System;
+using System.Windows.Forms;
 
 namespace QuanLyPhongHoc
 {
@@ -42,6 +44,14 @@ namespace QuanLyPhongHoc
             else
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormDangNhap_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                Application.Exit();
             }
         }
     }
