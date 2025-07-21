@@ -56,7 +56,7 @@
             groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(388, 426);
+            groupBox1.Size = new Size(609, 426);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách phòng học";
@@ -67,7 +67,7 @@
             dgvPhongHoc.Dock = DockStyle.Fill;
             dgvPhongHoc.Location = new Point(3, 29);
             dgvPhongHoc.Name = "dgvPhongHoc";
-            dgvPhongHoc.Size = new Size(382, 394);
+            dgvPhongHoc.Size = new Size(603, 394);
             dgvPhongHoc.TabIndex = 0;
             // 
             // groupBox2
@@ -87,7 +87,7 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
             groupBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(406, 12);
+            groupBox2.Location = new Point(627, 15);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(370, 423);
             groupBox2.TabIndex = 1;
@@ -115,6 +115,7 @@
             btnXoa.TabIndex = 12;
             btnXoa.Text = "Xoá";
             btnXoa.UseVisualStyleBackColor = false;
+            btnXoa.Click += btnXoa_Click;
             // 
             // btnSua
             // 
@@ -245,7 +246,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1009, 450);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FormQuanLy";

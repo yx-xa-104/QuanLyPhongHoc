@@ -71,6 +71,7 @@
             txtMatKhau.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             txtMatKhau.Location = new Point(170, 249);
             txtMatKhau.Name = "txtMatKhau";
+            txtMatKhau.PasswordChar = '*';
             txtMatKhau.Size = new Size(185, 33);
             txtMatKhau.TabIndex = 3;
             // 

@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace QuanLyPhongHoc.DTO
 {
     public class LichSuDung
     {
         public int ID { get; set; }
-        public string TenDangNhap { get; set; }
-        public string MatKhau { get; set; }
-        public string HoTen { get; set; }
-        public string Quyen { get; set; }
+        public int ID_Phong { get; set; }
+        public int ID_NguoiDung { get; set; }
+        public DateTime ThoiGianBatDau { get; set; }
+        public DateTime ThoiGianKetThuc { get; set; }
+        public string MucDich { get; set; }
     }
 }

@@ -116,7 +116,7 @@
             txtMucDich.Multiline = true;
             txtMucDich.Name = "txtMucDich";
             txtMucDich.ScrollBars = ScrollBars.Vertical;
-            txtMucDich.Size = new Size(200, 119);
+            txtMucDich.Size = new Size(219, 119);
             txtMucDich.TabIndex = 7;
             // 
             // btnDangKy

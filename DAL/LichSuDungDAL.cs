@@ -8,19 +8,9 @@ namespace QuanLyPhongHoc.DAL
     {
         private DatabaseConnection dbConnection = new DatabaseConnection();
 
-        /// <summary>
-        /// Kiểm tra xem có lịch đăng ký nào khác bị trùng trong khoảng thời gian yêu cầu cho một phòng cụ thể không.
-        /// </summary>
-        /// <param name="idPhong">ID của phòng cần kiểm tra</param>
-        /// <param name="batDauMoi">Thời gian bắt đầu của lịch đăng ký mới</param>
-        /// <param name="ketThucMoi">Thời gian kết thúc của lịch đăng ký mới</param>
-        /// <returns>True nếu có trùng lịch, False nếu không có</returns>
         public bool KiemTraTrungLich(int idPhong, DateTime batDauMoi, DateTime ketThucMoi)
         {
-            // Thời gian bắt đầu của lịch mới phải trước thời gian kết thúc của lịch cũ,
-            // Thời gian kết thúc của lịch mới phải sau thời gian bắt đầu của lịch cũ.
             string query = "SELECT COUNT(*) FROM LichSuDung WHERE ID_Phong = @ID_Phong AND (@BatDauMoi < ThoiGianKetThuc) AND (@KetThucMoi > ThoiGianBatDau)";
-
             using (SqlConnection conn = dbConnection.GetConnection())
             {
                 conn.Open();
@@ -28,9 +18,7 @@ namespace QuanLyPhongHoc.DAL
                 cmd.Parameters.AddWithValue("@ID_Phong", idPhong);
                 cmd.Parameters.AddWithValue("@BatDauMoi", batDauMoi);
                 cmd.Parameters.AddWithValue("@KetThucMoi", ketThucMoi);
-
                 int count = (int)cmd.ExecuteScalar();
-
                 return count > 0;
             }
         }
@@ -47,9 +35,31 @@ namespace QuanLyPhongHoc.DAL
                 cmd.Parameters.AddWithValue("@ThoiGianBatDau", lich.ThoiGianBatDau);
                 cmd.Parameters.AddWithValue("@ThoiGianKetThuc", lich.ThoiGianKetThuc);
                 cmd.Parameters.AddWithValue("@MucDich", lich.MucDich);
-
-                return cmd.ExecuteNonQuery() > 0; 
+                return cmd.ExecuteNonQuery() > 0;
             }
+        }
+
+        public DataTable GetLichSuChiTiet()
+        {
+            DataTable dt = new DataTable();
+            string query = @"SELECT
+                                ls.ID,
+                                p.TenPhong,
+                                n.HoTen AS NguoiDangKy,
+                                ls.ThoiGianBatDau,
+                                ls.ThoiGianKetThuc,
+                                ls.MucDich
+                             FROM LichSuDung ls
+                             JOIN PhongHoc p ON ls.ID_Phong = p.ID
+                             JOIN NguoiDung n ON ls.ID_NguoiDung = n.ID
+                             ORDER BY ls.ThoiGianBatDau DESC";
+            using (SqlConnection conn = dbConnection.GetConnection())
+            {
+                conn.Open();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
+                adapter.Fill(dt);
+            }
+            return dt;
         }
     }
 }

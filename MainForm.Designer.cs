@@ -90,6 +90,7 @@
             lịchSửSửDụngToolStripMenuItem.Name = "lịchSửSửDụngToolStripMenuItem";
             lịchSửSửDụngToolStripMenuItem.Size = new Size(180, 22);
             lịchSửSửDụngToolStripMenuItem.Text = "Xem lịch sử";
+            lịchSửSửDụngToolStripMenuItem.Click += lịchSửSửDụngToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 

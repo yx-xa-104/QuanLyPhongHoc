@@ -7,6 +7,10 @@ namespace QuanLyPhongHoc
 {
     public partial class FormDangKySuDung : Form
     {
+        // Đối tượng DAL để tương tác với cơ sở dữ liệu
+        private PhongHocDAL phongHocDAL = new PhongHocDAL();
+        private LichSuDungDAL lichSuDungDAL = new LichSuDungDAL();
+
         public FormDangKySuDung()
         {
             InitializeComponent();
@@ -14,20 +18,15 @@ namespace QuanLyPhongHoc
 
         private void FormDangKySuDung_Load(object sender, EventArgs e)
         {
-            var danhSachPhong = PhongHocDAL.GetAll();
-
-            // Gán danh sách này làm nguồn dữ liệu cho ComboBox
+            // Nạp danh sách phòng học vào ComboBox khi form được tải
+            var danhSachPhong = phongHocDAL.GetAll();
             cboPhongHoc.DataSource = danhSachPhong;
-
-            // Cấu hình ComboBox để hiển thị tên phòng và giữ lại ID
             cboPhongHoc.DisplayMember = "TenPhong";
             cboPhongHoc.ValueMember = "ID";
-
         }
 
         private void btnDangKy_Click(object sender, EventArgs e)
         {
-            // Kiểm tra dữ liệu đầu vào
             if (cboPhongHoc.SelectedValue == null)
             {
                 MessageBox.Show("Vui lòng chọn một phòng học.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -43,33 +42,32 @@ namespace QuanLyPhongHoc
                 return;
             }
 
-            // Lấy thông tin từ giao diện
             int idPhong = (int)cboPhongHoc.SelectedValue;
             string mucDich = txtMucDich.Text.Trim();
 
             try
             {
-                // Kiểm tra xem có bị trùng lịch hay không
-                if (LichSuDungDAL.KiemTraTrungLich(idPhong, thoiGianBatDau, thoiGianKetThuc))
+                // Kiểm tra xem phòng đã có người đăng ký trong khoảng thời gian này chưa
+                if (lichSuDungDAL.KiemTraTrungLich(idPhong, thoiGianBatDau, thoiGianKetThuc))
                 {
                     MessageBox.Show("Phòng đã có người đăng ký trong khoảng thời gian này. Vui lòng chọn thời gian khác.", "Trùng lịch", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     return;
                 }
 
-                // Nếu không trùng lịch, tiến hành đăng ký
                 LichSuDung lichDangKyMoi = new LichSuDung
                 {
                     ID_Phong = idPhong,
-                    ID_NguoiDung = CurrentUserSession.User.ID, // Lấy ID của người dùng đang đăng nhập
+                    ID_NguoiDung = CurrentUserSession.User.ID,
                     ThoiGianBatDau = thoiGianBatDau,
                     ThoiGianKetThuc = thoiGianKetThuc,
                     MucDich = mucDich
                 };
 
-                if (LichSuDungDAL.DangKy(lichDangKyMoi))
+                // Thực hiện đăng ký phòng
+                if (lichSuDungDAL.DangKy(lichDangKyMoi))
                 {
                     MessageBox.Show("Đăng ký phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close(); // Đóng form sau khi đăng ký thành công
+                    this.Close();
                 }
                 else
                 {

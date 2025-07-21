@@ -76,5 +76,11 @@ namespace QuanLyPhongHoc
             FormDangKySuDung formDangKy = new FormDangKySuDung();
             formDangKy.ShowDialog();
         }
+
+        private void lịchSửSửDụngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLichSu formLichSu = new FormLichSu();
+            formLichSu.ShowDialog();
+        }
     }
 }

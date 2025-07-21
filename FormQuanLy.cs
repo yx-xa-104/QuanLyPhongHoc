@@ -136,6 +136,40 @@ namespace QuanLyPhongHoc
         {
             ClearInputs();
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtID.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một phòng học để xóa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Hỏi xác nhận trước khi xóa
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa phòng học này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                try
+                {
+                    int id = int.Parse(txtID.Text);
+                    if (phongHocDAL.Xoa(id))
+                    {
+                        MessageBox.Show("Xóa phòng học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData();
+                        ClearInputs();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa phòng học thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Đã xảy ra lỗi. Có thể phòng này đã được đăng ký sử dụng và không thể xóa.\nChi tiết: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 
 }
