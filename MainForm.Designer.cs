@@ -109,12 +109,6 @@
             lblUserInfo.Size = new Size(63, 17);
             lblUserInfo.Text = "User name";
             // 
-            // timerAutoUpdate
-            // 
-            timerAutoUpdate.Enabled = true;
-            timerAutoUpdate.Interval = 60000;
-            timerAutoUpdate.Tick += timerAutoUpdate_Tick;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);

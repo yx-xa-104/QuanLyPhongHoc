@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace QuanLyPhongHoc
 {
@@ -10,13 +11,14 @@ namespace QuanLyPhongHoc
         public FormQuanLy()
         {
             InitializeComponent();
-        }       
+        }
 
         public void LoadData()
         {
             dgvPhongHoc.DataSource = phongHocDAL.GetAll();
+            dgvPhongHoc.ReadOnly = true;
             dgvPhongHoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-        }       
+        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -163,6 +165,8 @@ namespace QuanLyPhongHoc
             cboTrangThai.Items.Add("Đã đặt trước");
             cboTrangThai.SelectedIndex = 0; // Mặc định chọn mục đầu tiên
 
+            dgvPhongHoc.DataBindingComplete += dgvPhongHoc_DataBindingComplete;
+
             LoadData();
         }
 
@@ -187,6 +191,24 @@ namespace QuanLyPhongHoc
                     cboTrangThai.SelectedIndex = 0; // Nếu không tìm thấy, chọn giá trị mặc định
                 }
             }
-        }       
+        }
+
+        private void timerRefreshData_Tick(object sender, EventArgs e)
+        {
+            //.Yêu cầu CSDL tự cập nhật trạng thái
+            phongHocDAL.CapNhatTrangThaiTuDong();
+            // Tải lại dữ liệu mới nhất lên lưới
+            LoadData();
+        }
+
+        private void dgvPhongHoc_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Thiết lập font chữ cho tiêu đề và toàn bộ các ô
+            Font headerFont = new Font("Segoe UI", 10, FontStyle.Bold);
+            Font cellFont = new Font("Segoe UI", 10);
+
+            dgvPhongHoc.ColumnHeadersDefaultCellStyle.Font = headerFont;
+            dgvPhongHoc.DefaultCellStyle.Font = cellFont;
+        }
     }
 }

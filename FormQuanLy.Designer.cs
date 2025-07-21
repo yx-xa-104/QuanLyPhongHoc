@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             groupBox1 = new GroupBox();
             dgvPhongHoc = new DataGridView();
             groupBox2 = new GroupBox();
@@ -45,6 +46,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            timerRefreshData = new System.Windows.Forms.Timer(components);
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhongHoc).BeginInit();
             groupBox2.SuspendLayout();
@@ -73,6 +75,7 @@
             dgvPhongHoc.Size = new Size(745, 394);
             dgvPhongHoc.TabIndex = 0;
             dgvPhongHoc.CellClick += dgvPhongHoc_CellClick_1;
+            dgvPhongHoc.DataBindingComplete += dgvPhongHoc_DataBindingComplete;
             // 
             // groupBox2
             // 
@@ -247,6 +250,12 @@
             label1.TabIndex = 0;
             label1.Text = "ID";
             // 
+            // timerRefreshData
+            // 
+            timerRefreshData.Enabled = true;
+            timerRefreshData.Interval = 30000;
+            timerRefreshData.Tick += timerRefreshData_Tick;
+            // 
             // FormQuanLy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -283,5 +292,6 @@
         private Button btnSua;
         private Button btnThem;
         private ComboBox cboTrangThai;
+        private System.Windows.Forms.Timer timerRefreshData;
     }
 }

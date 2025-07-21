@@ -97,26 +97,24 @@ namespace QuanLyPhongHoc.DAL
         {
             // Sử dụng GETDATE() để lấy thời gian hiện tại của server SQL
             string query = @"
-        -- B1: Chuyển các phòng 'Đã đặt trước' thành 'Đang sử dụng' nếu đến giờ
-        UPDATE ph
-        SET ph.TrangThai = 'Đang sử dụng'
-        FROM PhongHoc ph
-        JOIN LichSuDung ls ON ph.ID = ls.ID_Phong
-        WHERE 
-            ph.TrangThai = 'Đã đặt trước' AND
-            GETDATE() BETWEEN ls.ThoiGianBatDau AND ls.ThoiGianKetThuc;
+        UPDATE PhongHoc
+        SET TrangThai =
+            CASE
+                -- 1. Nếu có lịch đang diễn ra -> 'Đang sử dụng'
+                WHEN EXISTS (
+                    SELECT 1 FROM LichSuDung 
+                    WHERE ID_Phong = PhongHoc.ID AND GETDATE() BETWEEN ThoiGianBatDau AND ThoiGianKetThuc
+                ) THEN 'Đang sử dụng'
 
-        -- B2: Chuyển các phòng 'Đang sử dụng' thành 'Trống' nếu đã hết giờ
-        -- Logic này cần cẩn thận để không chuyển phòng có lịch đặt ngay sau đó
-        UPDATE ph
-        SET ph.TrangThai = 'Trống'
-        FROM PhongHoc ph
-        WHERE
-            ph.TrangThai = 'Đang sử dụng' AND
-            NOT EXISTS (
-                SELECT 1 FROM LichSuDung ls 
-                WHERE ls.ID_Phong = ph.ID AND GETDATE() BETWEEN ls.ThoiGianBatDau AND ls.ThoiGianKetThuc
-            );
+                -- 2. Nếu không có lịch diễn ra, nhưng có lịch trong tương lai -> 'Đã đặt trước'
+                WHEN EXISTS (
+                    SELECT 1 FROM LichSuDung 
+                    WHERE ID_Phong = PhongHoc.ID AND ThoiGianBatDau > GETDATE()
+                ) THEN 'Đã đặt trước'
+
+                -- 3. Nếu không thuộc 2 trường hợp trên -> 'Trống'
+                ELSE 'Trống'
+            END;
     ";
 
             using (SqlConnection conn = dbConnection.GetConnection())

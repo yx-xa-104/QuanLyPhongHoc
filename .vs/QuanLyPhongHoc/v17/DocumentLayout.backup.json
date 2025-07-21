@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\formlichsu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formlichsu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\formquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\formquanly.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
@@ -27,12 +23,20 @@
       "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formdangkysudung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\formdangkysudung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formdangkysudung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\formlichsu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formlichsu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\dal\\phonghocdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:dal\\phonghocdal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:mainform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formdangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\formdangkysudung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|solutionrelative:formdangkysudung.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E2AEAF82-DC3C-444E-9CC0-BA55BDEAAA18}|QuanLyPhongHoc.csproj|c:\\users\\user\\documents\\github\\quanlyphonghoc\\dal\\databaseconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -58,11 +62,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "FormQuanLy.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormQuanLy.cs",
               "RelativeDocumentMoniker": "FormQuanLy.cs",
@@ -75,7 +79,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "FormDangKySuDung.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormDangKySuDung.cs",
               "RelativeDocumentMoniker": "FormDangKySuDung.cs",
@@ -83,12 +87,11 @@
               "RelativeToolTip": "FormDangKySuDung.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-21T05:15:10.621Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainForm.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
@@ -101,7 +104,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 5,
               "Title": "FormLichSu.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormLichSu.cs",
               "RelativeDocumentMoniker": "FormLichSu.cs",
@@ -109,12 +112,11 @@
               "RelativeToolTip": "FormLichSu.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-21T05:18:24.066Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "FormDangNhap.cs [Design]",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormDangNhap.cs",
               "RelativeDocumentMoniker": "FormDangNhap.cs",
@@ -122,8 +124,7 @@
               "RelativeToolTip": "FormDangNhap.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-21T05:23:45.22Z",
-              "IsPinned": true,
-              "EditorCaption": " [Design]"
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -131,20 +132,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "MainForm.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\MainForm.cs",
               "RelativeDocumentMoniker": "MainForm.cs",
               "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\MainForm.cs",
               "RelativeToolTip": "MainForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAADcAAAAAAAAAAAAswEwAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T08:54:29.076Z",
+              "WhenOpened": "2025-07-21T11:04:28.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormQuanLy.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormQuanLy.cs",
+              "RelativeDocumentMoniker": "FormQuanLy.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormQuanLy.cs",
+              "RelativeToolTip": "FormQuanLy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAKgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T10:47:15.019Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "MainForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\MainForm.Designer.cs",
+              "RelativeDocumentMoniker": "MainForm.Designer.cs",
+              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\MainForm.Designer.cs",
+              "RelativeToolTip": "MainForm.Designer.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAlwHgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T11:26:05.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "FormDangKySuDung.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\FormDangKySuDung.cs",
               "RelativeDocumentMoniker": "FormDangKySuDung.cs",
@@ -156,19 +183,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "PhongHocDAL.cs",
-              "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\DAL\\PhongHocDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\PhongHocDAL.cs",
-              "ToolTip": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\DAL\\PhongHocDAL.cs",
-              "RelativeToolTip": "DAL\\PhongHocDAL.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAAQwHcAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T09:54:21.459Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "DatabaseConnection.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\DAL\\DatabaseConnection.cs",
               "RelativeDocumentMoniker": "DAL\\DatabaseConnection.cs",
@@ -180,7 +195,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "LichSuDungDAL.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\DAL\\LichSuDungDAL.cs",
               "RelativeDocumentMoniker": "DAL\\LichSuDungDAL.cs",
@@ -192,7 +207,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "LichSuDung.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\DTO\\LichSuDung.cs",
               "RelativeDocumentMoniker": "DTO\\LichSuDung.cs",
@@ -204,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "PhongHoc.cs",
               "DocumentMoniker": "C:\\Users\\User\\Documents\\GitHub\\QuanLyPhongHoc\\DTO\\PhongHoc.cs",
               "RelativeDocumentMoniker": "DTO\\PhongHoc.cs",
