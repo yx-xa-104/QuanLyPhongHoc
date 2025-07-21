@@ -82,5 +82,33 @@ namespace QuanLyPhongHoc
             FormLichSu formLichSu = new FormLichSu();
             formLichSu.ShowDialog();
         }
+
+        private void đăngXuấtToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            // Đóng form hiện tại
+            this.Close();
+
+            // Hiển thị lại form đăng nhập
+            Form formDangNhap = Application.OpenForms["FormDangNhap"];
+            if (formDangNhap != null)
+            {
+                formDangNhap.Show();
+            }
+            else
+            {
+                FormDangNhap newLogin = new FormDangNhap();
+                newLogin.Show();
+            }
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Khi MainForm đóng, nếu người dùng không chủ động đăng xuất thì hiển thị lại form đăng nhập.
+            Form formDangNhap = Application.OpenForms["FormDangNhap"];
+            if (formDangNhap != null && formDangNhap.Visible == false)
+            {
+                formDangNhap.Show();
+            }
+        }
     }
 }

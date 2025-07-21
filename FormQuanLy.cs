@@ -1,33 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyPhongHoc
 {
     public partial class FormQuanLy : Form
     {
+        private DAL.PhongHocDAL phongHocDAL = new DAL.PhongHocDAL();
+
         public FormQuanLy()
         {
             InitializeComponent();
         }
 
-        private DAL.PhongHocDAL phongHocDAL = new DAL.PhongHocDAL();
         private void FormQuanLy_Load(object sender, EventArgs e)
         {
-            LoadData();
         }
+
         private void LoadData()
         {
             dgvPhongHoc.DataSource = phongHocDAL.GetAll();
+            dgvPhongHoc.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        // Hiển thị thông tin phòng học khi click vào dòng trong DataGridView
         private void dgvPhongHoc_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -36,13 +30,30 @@ namespace QuanLyPhongHoc
                 txtID.Text = row.Cells["ID"].Value.ToString();
                 txtTenPhong.Text = row.Cells["TenPhong"].Value.ToString();
                 txtSucChua.Text = row.Cells["SucChua"].Value.ToString();
-                txtTrangThai.Text = row.Cells["TrangThai"].Value.ToString();
                 txtMoTa.Text = row.Cells["MoTa"].Value.ToString();
+
+                string trangThaiFromGrid = row.Cells["TrangThai"].Value.ToString();
+                int index = cboTrangThai.FindStringExact(trangThaiFromGrid);
+                if (index != -1)
+                {
+                    cboTrangThai.SelectedIndex = index;
+                }
+                else
+                {
+                    cboTrangThai.SelectedIndex = 0; // Nếu không tìm thấy, chọn giá trị mặc định
+                }
             }
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+
+            if (cboTrangThai.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn trạng thái cho phòng học!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string tenPhong = txtTenPhong.Text.Trim();
             if (string.IsNullOrEmpty(tenPhong))
             {
@@ -55,16 +66,16 @@ namespace QuanLyPhongHoc
                 DTO.PhongHoc phong = new DTO.PhongHoc
                 {
                     TenPhong = tenPhong,
-                    SucChua = int.Parse(txtSucChua.Text), // Cần kiểm tra định dạng số
-                    TrangThai = txtTrangThai.Text,
+                    SucChua = int.Parse(txtSucChua.Text),
+                    TrangThai = cboTrangThai.SelectedItem.ToString(),
                     MoTa = txtMoTa.Text
                 };
 
                 if (phongHocDAL.Them(phong))
                 {
                     MessageBox.Show("Thêm phòng học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(); // 3. Tải lại dữ liệu mới lên DataGridView
-                    ClearInputs(); // 4. Xóa trắng các ô nhập liệu
+                    LoadData();
+                    ClearInputs();
                 }
                 else
                 {
@@ -83,30 +94,30 @@ namespace QuanLyPhongHoc
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            // Kiểm tra xem người dùng đã chọn phòng học nào chưa
+            // Kiểm tra xem người dùng đã chọn phòng nào để sửa chưa (dựa vào txtID)
             if (string.IsNullOrEmpty(txtID.Text))
             {
-                MessageBox.Show("Vui lòng chọn một phòng học để sửa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn một phòng học từ danh sách để sửa!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Kiểm tra các trường thông tin cần thiết
             try
             {
+                // Tạo đối tượng PhongHoc từ thông tin ĐÃ ĐƯỢC SỬA trong các ô
                 DTO.PhongHoc phong = new DTO.PhongHoc
                 {
                     ID = int.Parse(txtID.Text),
                     TenPhong = txtTenPhong.Text.Trim(),
                     SucChua = int.Parse(txtSucChua.Text),
-                    TrangThai = txtTrangThai.Text,
+                    TrangThai = cboTrangThai.SelectedItem.ToString(),
                     MoTa = txtMoTa.Text
                 };
 
-                // Kiểm tra tên phòng không được để trống
+                // Gọi DAL để cập nhật vào CSDL
                 if (phongHocDAL.Sua(phong))
                 {
                     MessageBox.Show("Cập nhật phòng học thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
+                    LoadData(); // Tải lại danh sách để thấy thay đổi
                     ClearInputs();
                 }
                 else
@@ -125,11 +136,12 @@ namespace QuanLyPhongHoc
         }
         private void ClearInputs()
         {
-            txtID.Text = "";
+            txtID.Text = ""; // ID sẽ trống khi thêm mới
             txtTenPhong.Text = "";
             txtSucChua.Text = "";
-            txtTrangThai.Text = "";
             txtMoTa.Text = "";
+            cboTrangThai.SelectedIndex = 0; // Reset về trạng thái "Trống"
+            txtTenPhong.Focus(); // Di chuyển con trỏ vào ô Tên phòng
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -145,7 +157,6 @@ namespace QuanLyPhongHoc
                 return;
             }
 
-            // Hỏi xác nhận trước khi xóa
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa phòng học này không?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -170,6 +181,37 @@ namespace QuanLyPhongHoc
                 }
             }
         }
-    }
 
+        private void FormQuanLy_Load_1(object sender, EventArgs e)
+        {
+            // Thêm các mục vào ComboBox Trạng thái
+            cboTrangThai.Items.Add("Trống");
+            cboTrangThai.Items.Add("Đang sử dụng");
+            cboTrangThai.Items.Add("Đã đặt trước");
+            cboTrangThai.SelectedIndex = 0; // Mặc định chọn mục đầu tiên
+
+            LoadData();
+        }
+
+        private void dgvPhongHoc_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            // Chỉ thực hiện khi người dùng click vào một dòng hợp lệ
+            if (e.RowIndex >= 0)
+            {
+                // Lấy dòng đang được chọn
+                DataGridViewRow row = dgvPhongHoc.Rows[e.RowIndex];
+
+                // Điền thông tin từ dòng vào các control tương ứng
+                txtID.Text = row.Cells["ID"].Value.ToString();
+                txtTenPhong.Text = row.Cells["TenPhong"].Value.ToString();
+                txtSucChua.Text = row.Cells["SucChua"].Value.ToString();
+                txtMoTa.Text = row.Cells["MoTa"].Value.ToString();
+
+                // Gán giá trị cho ComboBox một cách an toàn
+                string trangThaiFromGrid = row.Cells["TrangThai"].Value.ToString();
+                int index = cboTrangThai.FindStringExact(trangThaiFromGrid);
+                cboTrangThai.SelectedIndex = (index != -1) ? index : 0;
+            }
+        }       
+    }
 }

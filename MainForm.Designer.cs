@@ -61,8 +61,9 @@
             // đăngXuấtToolStripMenuItem
             // 
             đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            đăngXuấtToolStripMenuItem.Size = new Size(127, 22);
+            đăngXuấtToolStripMenuItem.Size = new Size(180, 22);
             đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+            đăngXuấtToolStripMenuItem.Click += đăngXuấtToolStripMenuItem_Click_1;
             // 
             // chứcNăngToolStripMenuItem
             // 
@@ -74,21 +75,21 @@
             // quảnLýToolStripMenuItem
             // 
             quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            quảnLýToolStripMenuItem.Size = new Size(180, 22);
+            quảnLýToolStripMenuItem.Size = new Size(163, 22);
             quảnLýToolStripMenuItem.Text = "Quản lý";
             quảnLýToolStripMenuItem.Click += quảnLýToolStripMenuItem_Click;
             // 
             // đăngKýSửDụngToolStripMenuItem
             // 
             đăngKýSửDụngToolStripMenuItem.Name = "đăngKýSửDụngToolStripMenuItem";
-            đăngKýSửDụngToolStripMenuItem.Size = new Size(180, 22);
+            đăngKýSửDụngToolStripMenuItem.Size = new Size(163, 22);
             đăngKýSửDụngToolStripMenuItem.Text = "Đăng ký sử dụng";
             đăngKýSửDụngToolStripMenuItem.Click += đăngKýSửDụngToolStripMenuItem_Click;
             // 
             // lịchSửSửDụngToolStripMenuItem
             // 
             lịchSửSửDụngToolStripMenuItem.Name = "lịchSửSửDụngToolStripMenuItem";
-            lịchSửSửDụngToolStripMenuItem.Size = new Size(180, 22);
+            lịchSửSửDụngToolStripMenuItem.Size = new Size(163, 22);
             lịchSửSửDụngToolStripMenuItem.Text = "Xem lịch sử";
             lịchSửSửDụngToolStripMenuItem.Click += lịchSửSửDụngToolStripMenuItem_Click;
             // 
@@ -119,6 +120,7 @@
             MainMenuStrip = menuStrip1;
             Name = "MainForm";
             Text = "MainForm";
+            FormClosed += MainForm_FormClosed;
             Load += MainForm_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

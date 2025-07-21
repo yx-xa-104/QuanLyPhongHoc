@@ -72,10 +72,11 @@
             // 
             dtpBatDau.CalendarFont = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtpBatDau.CustomFormat = "dd/MM/yyyy HH:mm";
+            dtpBatDau.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtpBatDau.Format = DateTimePickerFormat.Custom;
             dtpBatDau.Location = new Point(19, 107);
             dtpBatDau.Name = "dtpBatDau";
-            dtpBatDau.Size = new Size(200, 23);
+            dtpBatDau.Size = new Size(200, 29);
             dtpBatDau.TabIndex = 3;
             // 
             // label3
@@ -92,10 +93,11 @@
             // 
             dtpKetThuc.CalendarFont = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtpKetThuc.CustomFormat = "dd/MM/yyyy HH:mm";
+            dtpKetThuc.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dtpKetThuc.Format = DateTimePickerFormat.Custom;
             dtpKetThuc.Location = new Point(266, 107);
             dtpKetThuc.Name = "dtpKetThuc";
-            dtpKetThuc.Size = new Size(200, 23);
+            dtpKetThuc.Size = new Size(200, 29);
             dtpKetThuc.TabIndex = 5;
             // 
             // label4

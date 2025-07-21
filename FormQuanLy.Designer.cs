@@ -31,12 +31,12 @@
             groupBox1 = new GroupBox();
             dgvPhongHoc = new DataGridView();
             groupBox2 = new GroupBox();
+            cboTrangThai = new ComboBox();
             btnHuy = new Button();
             btnXoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
             txtMoTa = new TextBox();
-            txtTrangThai = new TextBox();
             txtSucChua = new TextBox();
             txtTenPhong = new TextBox();
             txtID = new TextBox();
@@ -56,28 +56,32 @@
             groupBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(12, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(609, 426);
+            groupBox1.Size = new Size(751, 426);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Danh sách phòng học";
             // 
             // dgvPhongHoc
             // 
+            dgvPhongHoc.AllowUserToAddRows = false;
+            dgvPhongHoc.AllowUserToDeleteRows = false;
             dgvPhongHoc.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvPhongHoc.Dock = DockStyle.Fill;
             dgvPhongHoc.Location = new Point(3, 29);
             dgvPhongHoc.Name = "dgvPhongHoc";
-            dgvPhongHoc.Size = new Size(603, 394);
+            dgvPhongHoc.ReadOnly = true;
+            dgvPhongHoc.Size = new Size(745, 394);
             dgvPhongHoc.TabIndex = 0;
+            dgvPhongHoc.CellClick += dgvPhongHoc_CellClick_1;
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(cboTrangThai);
             groupBox2.Controls.Add(btnHuy);
             groupBox2.Controls.Add(btnXoa);
             groupBox2.Controls.Add(btnSua);
             groupBox2.Controls.Add(btnThem);
             groupBox2.Controls.Add(txtMoTa);
-            groupBox2.Controls.Add(txtTrangThai);
             groupBox2.Controls.Add(txtSucChua);
             groupBox2.Controls.Add(txtTenPhong);
             groupBox2.Controls.Add(txtID);
@@ -87,12 +91,23 @@
             groupBox2.Controls.Add(label2);
             groupBox2.Controls.Add(label1);
             groupBox2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox2.Location = new Point(627, 15);
+            groupBox2.Location = new Point(769, 15);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(370, 423);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin chi tiết";
+            // 
+            // cboTrangThai
+            // 
+            cboTrangThai.BackColor = SystemColors.Control;
+            cboTrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboTrangThai.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cboTrangThai.FormattingEnabled = true;
+            cboTrangThai.Location = new Point(6, 221);
+            cboTrangThai.Name = "cboTrangThai";
+            cboTrangThai.Size = new Size(358, 29);
+            cboTrangThai.TabIndex = 14;
             // 
             // btnHuy
             // 
@@ -151,16 +166,6 @@
             txtMoTa.Name = "txtMoTa";
             txtMoTa.Size = new Size(358, 77);
             txtMoTa.TabIndex = 9;
-            // 
-            // txtTrangThai
-            // 
-            txtTrangThai.BackColor = SystemColors.Control;
-            txtTrangThai.BorderStyle = BorderStyle.FixedSingle;
-            txtTrangThai.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txtTrangThai.Location = new Point(6, 221);
-            txtTrangThai.Name = "txtTrangThai";
-            txtTrangThai.Size = new Size(358, 29);
-            txtTrangThai.TabIndex = 8;
             // 
             // txtSucChua
             // 
@@ -246,11 +251,12 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1009, 450);
+            ClientSize = new Size(1151, 450);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FormQuanLy";
             Text = "FormQuanLy";
+            Load += FormQuanLy_Load_1;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvPhongHoc).EndInit();
             groupBox2.ResumeLayout(false);
@@ -269,7 +275,6 @@
         private Label label2;
         private Label label1;
         private TextBox txtMoTa;
-        private TextBox txtTrangThai;
         private TextBox txtSucChua;
         private TextBox txtTenPhong;
         private TextBox txtID;
@@ -277,5 +282,6 @@
         private Button btnXoa;
         private Button btnSua;
         private Button btnThem;
+        private ComboBox cboTrangThai;
     }
 }
