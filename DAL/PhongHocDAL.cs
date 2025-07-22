@@ -80,48 +80,35 @@ namespace QuanLyPhongHoc.DAL
                 cmd.Parameters.AddWithValue("@ID", id);
                 return cmd.ExecuteNonQuery() > 0;
             }
-        }
-        public bool UpdateStatus(int idPhong, string trangThaiMoi)
-        {
-            string query = "UPDATE PhongHoc SET TrangThai = @TrangThai WHERE ID = @ID";
-            using (SqlConnection conn = dbConnection.GetConnection())
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@ID", idPhong);
-                cmd.Parameters.AddWithValue("@TrangThai", trangThaiMoi);
-                return cmd.ExecuteNonQuery() > 0;
-            }
-        }
+        }       
         public void CapNhatTrangThaiTuDong()
         {
-            // Sử dụng GETDATE() để lấy thời gian hiện tại của server SQL
+            // Đảm bảo phòng luôn có trạng thái đúng tại thời điểm hiện tại.
             string query = @"
+        -- B1: Reset tất cả các phòng không được sử dụng về 'Trống'.
         UPDATE PhongHoc
-        SET TrangThai =
-            CASE
-                -- 1. Nếu có lịch đang diễn ra -> 'Đang sử dụng'
-                WHEN EXISTS (
-                    SELECT 1 FROM LichSuDung 
-                    WHERE ID_Phong = PhongHoc.ID AND GETDATE() BETWEEN ThoiGianBatDau AND ThoiGianKetThuc
-                ) THEN 'Đang sử dụng'
+        SET TrangThai = 'Trống'
+        WHERE ID NOT IN (
+            SELECT DISTINCT ID_Phong FROM LichSuDung
+            WHERE GETDATE() BETWEEN ThoiGianBatDau AND ThoiGianKetThuc
+        );
 
-                -- 2. Nếu không có lịch diễn ra, nhưng có lịch trong tương lai -> 'Đã đặt trước'
-                WHEN EXISTS (
-                    SELECT 1 FROM LichSuDung 
-                    WHERE ID_Phong = PhongHoc.ID AND ThoiGianBatDau > GETDATE()
-                ) THEN 'Đã đặt trước'
-
-                -- 3. Nếu không thuộc 2 trường hợp trên -> 'Trống'
-                ELSE 'Trống'
-            END;
+        -- B2: Cập nhật tất cả các phòng đang được sử dụng thành 'Đang sử dụng'.
+        UPDATE PhongHoc
+        SET TrangThai = 'Đang sử dụng'
+        WHERE ID IN (
+            SELECT DISTINCT ID_Phong FROM LichSuDung
+            WHERE GETDATE() BETWEEN ThoiGianBatDau AND ThoiGianKetThuc
+        );
     ";
 
-            using (SqlConnection conn = dbConnection.GetConnection())
+            using (var conn = dbConnection.GetConnection())
             {
                 conn.Open();
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.ExecuteNonQuery();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
     }

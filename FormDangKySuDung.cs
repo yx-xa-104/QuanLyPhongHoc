@@ -66,9 +66,6 @@ namespace QuanLyPhongHoc
 
                 if (lichSuDungDAL.DangKy(lichDangKyMoi))
                 {
-                    // Sau khi đăng ký thành công, cập nhật trạng thái phòng thành "Đã đặt trước"
-                    phongHocDAL.UpdateStatus(idPhong, "Đã đặt trước");
-
                     MessageBox.Show("Đăng ký phòng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close(); // Đóng form sau khi đăng ký thành công
                 }

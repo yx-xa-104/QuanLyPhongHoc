@@ -47,6 +47,7 @@
             label2 = new Label();
             label1 = new Label();
             timerRefreshData = new System.Windows.Forms.Timer(components);
+            button1 = new Button();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPhongHoc).BeginInit();
             groupBox2.SuspendLayout();
@@ -75,7 +76,6 @@
             dgvPhongHoc.Size = new Size(745, 394);
             dgvPhongHoc.TabIndex = 0;
             dgvPhongHoc.CellClick += dgvPhongHoc_CellClick_1;
-            dgvPhongHoc.DataBindingComplete += dgvPhongHoc_DataBindingComplete;
             // 
             // groupBox2
             // 
@@ -256,11 +256,23 @@
             timerRefreshData.Interval = 30000;
             timerRefreshData.Tick += timerRefreshData_Tick;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Lime;
+            button1.Location = new Point(1114, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(25, 18);
+            button1.TabIndex = 2;
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            button1.MouseClick += button1_MouseClick;
+            // 
             // FormQuanLy
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1151, 450);
+            Controls.Add(button1);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FormQuanLy";
@@ -293,5 +305,6 @@
         private Button btnThem;
         private ComboBox cboTrangThai;
         private System.Windows.Forms.Timer timerRefreshData;
+        private Button button1;
     }
 }
